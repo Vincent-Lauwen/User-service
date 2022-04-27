@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\S6\\Own project\\Project\\UserServer\\UserServer\\UserServer.csproj": {}
+    "E:\\S6\\Own project\\Project\\User-service\\UserServer\\UserServer\\UserServer.csproj": {}
   },
   "projects": {
-    "E:\\S6\\Own project\\Project\\UserServer\\UserServer\\UserServer.csproj": {
+    "E:\\S6\\Own project\\Project\\User-service\\UserServer\\UserServer\\UserServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\S6\\Own project\\Project\\UserServer\\UserServer\\UserServer.csproj",
+        "projectUniqueName": "E:\\S6\\Own project\\Project\\User-service\\UserServer\\UserServer\\UserServer.csproj",
         "projectName": "UserServer",
-        "projectPath": "E:\\S6\\Own project\\Project\\UserServer\\UserServer\\UserServer.csproj",
+        "projectPath": "E:\\S6\\Own project\\Project\\User-service\\UserServer\\UserServer\\UserServer.csproj",
         "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-        "outputPath": "E:\\S6\\Own project\\Project\\UserServer\\UserServer\\obj\\",
+        "outputPath": "E:\\S6\\Own project\\Project\\User-service\\UserServer\\UserServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,9 +40,27 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.14.0, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.2.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

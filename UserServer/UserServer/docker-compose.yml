@@ -1,0 +1,18 @@
+﻿version: '3.0'
+
+services:
+   db:
+     image: mysql:5.7
+     container_name: UserServerDatabase
+     environment:
+       MYSQL_DATABASE: db
+       MYSQL_ROOT_PASSWORD: root
+     ports:
+       - "8093:8093" 
+     volumes:
+       - dbdata:/var/lib/mysql
+       - ./_MySQL_Init_Script:/docker-entrypoint-initdb.d
+     restart: always
+
+volumes:
+    dbdata:
