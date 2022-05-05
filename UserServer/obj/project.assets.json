@@ -1126,11 +1126,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\S6\\Own project\\Project\\User-service\\UserServer\\UserServer\\UserServer.csproj",
+      "projectUniqueName": "E:\\S6\\Own project\\Project\\User-service\\UserServer\\UserServer.csproj",
       "projectName": "UserServer",
-      "projectPath": "E:\\S6\\Own project\\Project\\User-service\\UserServer\\UserServer\\UserServer.csproj",
+      "projectPath": "E:\\S6\\Own project\\Project\\User-service\\UserServer\\UserServer.csproj",
       "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-      "outputPath": "E:\\S6\\Own project\\Project\\User-service\\UserServer\\UserServer\\obj\\",
+      "outputPath": "E:\\S6\\Own project\\Project\\User-service\\UserServer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config",
