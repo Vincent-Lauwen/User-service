@@ -1,18 +1,13 @@
-﻿version: '3.0'
+﻿version: "3.8"
 
 services:
-   db:
-     image: mysql:5.7
-     container_name: UserServerDatabase
-     environment:
-       MYSQL_DATABASE: db
-       MYSQL_ROOT_PASSWORD: root
-     ports:
-       - "8093:8093" 
-     volumes:
-       - dbdata:/var/lib/mysql
-       - ./_MySQL_Init_Script:/docker-entrypoint-initdb.d
-     restart: always
-
-volumes:
-    dbdata:
+  db-local:
+    image: mariadb
+    env_file: .env
+    environment:
+      MARIADB_ROOT_PASSWORD: $DB_ROOT_PASSWORD
+      MARIADB_DATABASE: $DB_DATABASE
+    ports:
+      - "${DB_PORT}:3306"
+    volumes:
+      - ./output/local-db:/var/lib/mysql

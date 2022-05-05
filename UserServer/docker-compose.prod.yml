@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  api-db-prod:
+    image: mariadb
+    env_file: .env.prod
+    networks:
+      - internal-net
+    environment:
+      MARIADB_ROOT_PASSWORD: $DB_ROOT_PASSWORD
+      MARIADB_DATABASE: $DB_DATABASE
+    volumes:
+      - ./output/prod-db:/var/lib/mysql
+
+  api-prod:
+    depends_on:
+      - api-db-prod
+    env_file: .env.prod
+    networks:
+      - vincent-net
+      - internal-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.create-service.rule=Path(`/create`)"
+      - "traefik.http.routers.create-service.entrypoints=web"
+    build: .
+    image: ghcr.io/Vincent-Lauwen/Tweet-Service:latest
+
+networks:
+  driessen-net:
+    name: "driessen-net"
+  internal-net:
+
