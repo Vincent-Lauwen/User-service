@@ -24,10 +24,10 @@ services:
       - "traefik.http.routers.create-service.rule=Path(`/create`)"
       - "traefik.http.routers.create-service.entrypoints=web"
     build: .
-    image: ghcr.io/Vincent-Lauwen/Tweet-Service:latest
+    image: ghcr.io/Vincent-Lauwen/User-service:latest
 
 networks:
-  driessen-net:
-    name: "driessen-net"
+  vincent-net:
+    name: "vincent-net"
   internal-net:
 
