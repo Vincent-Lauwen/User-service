@@ -24,7 +24,7 @@ services:
       - "traefik.http.routers.create-service.rule=Path(`/create`)"
       - "traefik.http.routers.create-service.entrypoints=web"
     build: .
-    image: ghcr.io/Vincent-Lauwen/User-service:latest
+    image: ghcr.io/vincent-lauwen/user-service:latest
 
 networks:
   vincent-net:
