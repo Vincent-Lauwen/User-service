@@ -1,13 +1,28 @@
 ﻿version: "3.8"
 
 services:
-  db-local:
+  db:
     image: mariadb
     env_file: .env
+    volumes:
+      - ./output/prod-db:/var/lib/mysql
     environment:
       MARIADB_ROOT_PASSWORD: $DB_ROOT_PASSWORD
       MARIADB_DATABASE: $DB_DATABASE
     ports:
       - "${DB_PORT}:3306"
-    volumes:
-      - ./output/local-db:/var/lib/mysql
+    
+
+  api:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - "${API_PORT}:80"
+    env_file: .env
+    image: ghcr.io/vincent-lauwen/user-service:latest
+    environment:
+      - DBHOST=db
+
