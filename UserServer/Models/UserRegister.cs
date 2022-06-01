@@ -5,35 +5,29 @@ using System.Text.Json.Serialization;
 
 namespace UserServer.Models
 {
-    public class User
+    public class UserRegister
     {
-        public User(string id, string name, string email, string password, string website, Blob profile_pic, string bio, string role)
+        public UserRegister(string name, string email, string password, string website, Blob profile_pic, string bio)
         {
-            Id = id;
             Name = name;
             Email = email;
             Password = password;
             Website = website;
             Profile_pic = profile_pic;
             Bio = bio;
-            Role = role;
         }
 
-        public User()
+        public UserRegister()
         {
         }
 
-        [Key]
-        public string Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        [JsonIgnore]
         public string Password { get; set; }
         public string Website { get; set; }
+        [JsonIgnore]
         [NotMapped]
         public Blob Profile_pic { get; set; }
         public string Bio { get; set; }
-        public string Role { get; set; }
-        
     }
 }

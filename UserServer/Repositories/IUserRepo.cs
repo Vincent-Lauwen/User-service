@@ -6,6 +6,8 @@ namespace UserServer.Repositories
     {
         List<User> GetAll();
         List<User> GetUserById(string id);
-        void CreateUser(User user);
+        string RegisterUser(UserRegister user);
+        User UpdateUser(User user);
+        string LoginUser(UserLogin user);
     }
 }

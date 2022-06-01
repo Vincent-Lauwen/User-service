@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using RabbitMQ;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
+using UserServer.Models;
+using UserServer.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,67 +15,57 @@ namespace UserServer.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        // GET: api/<UserController>
-        [HttpGet("/rabbit")]
-        public void RabbitMQConsumerTest()
+        private IUserRepo _repository;
+        private readonly IMessageProducer _messagePublisher;
+
+        public UserController(IUserRepo repo, IMessageProducer messagePublisher)
         {
-            ConnectionFactory factory = new ConnectionFactory()
-            {
-                HostName = "localhost",
-                Port = 5672,
-                UserName = "guest",
-                Password = "guest",
-            };
-
-            using IConnection connection = factory.CreateConnection();
-            IModel model = connection.CreateModel();
-
-            model.ExchangeDeclare("KwetterTest", ExchangeType.Fanout, true, true, null);
-            model.QueueDeclare("KwetterQ");
-            model.QueueBind("KwetterTest", "KwetterQ", "#");
-
-            var consumer = new EventingBasicConsumer(model);
-            consumer.Received += (model, ea) =>
-            {
-                var body = ea.Body.ToArray();
-                var message = Encoding.Unicode.GetString(body);
-                Console.WriteLine(" [x] {0}", message);
-            };
-            model.BasicConsume("KwetterQ",
-                                 autoAck: true,
-                                 consumer: consumer);
+            _repository = repo;
+            _messagePublisher = messagePublisher;
         }
 
         // GET: api/<UserController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpPost("/register")]
+        public ActionResult<IEnumerable<string>> Register([FromBody] UserRegister user)
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                if (user == null)
+                    throw new Exception("User is null");
+
+                var token = _repository.RegisterUser(user);
+
+                if (token == null)
+                    throw new Exception("Token is null");
+
+                return Ok(token);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // GET api/<UserController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpPost("/login")]
+        public ActionResult<IEnumerable<string>> Login([FromBody] UserLogin user)
         {
-            return "value";
-        }
+            try
+            {
+                if (user == null)
+                    throw new Exception("User is null");
 
-        // POST api/<UserController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+                var token = _repository.LoginUser(user);
 
-        // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+                if (token == null)
+                    throw new Exception("Token is null");
 
-        // DELETE api/<UserController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+                return Ok(token);  
+                
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

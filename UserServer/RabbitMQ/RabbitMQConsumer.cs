@@ -40,6 +40,12 @@ namespace RabbitMQ
             try
             {
                 Console.WriteLine("start background service");
+
+                if (_channel == null || _connection == null)
+                {
+                    return Task.CompletedTask;
+                }
+
                 // when the service is stopping, dispose these references to prevent leaks
                 if (stoppingToken.IsCancellationRequested)
                 {
