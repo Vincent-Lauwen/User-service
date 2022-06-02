@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "kwetterk8s-2cf5"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "kwetterk8s-2cf5"
+  template:
+    metadata:
+      labels:
+        app: "kwetterk8s-2cf5"
+    spec:
+      containers:
+        - name: "kwetterk8s-2cf5"
+          image: "kwettercr.azurecr.io/kwetterk8s"
+          ports:
+          - containerPort: 80
