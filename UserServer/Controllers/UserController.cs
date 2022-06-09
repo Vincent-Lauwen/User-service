@@ -67,5 +67,19 @@ namespace UserServer.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<IEnumerable<User>> GetUserById(Guid id)
+        {
+            try
+            {
+                User user = _repository.GetUserById(id.ToString());
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

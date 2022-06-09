@@ -109,9 +109,9 @@ namespace UserServer.Repositories
             throw new NotImplementedException();
         }
 
-        public List<User> GetUserById(string id)
+        public User GetUserById(string id)
         {
-            throw new NotImplementedException();
+            return _context.Users.FirstOrDefault(x => x.Id == id);
         }
 
         public User UpdateUser(User user)

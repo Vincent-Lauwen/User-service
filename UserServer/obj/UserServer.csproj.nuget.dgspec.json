@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gebruiker\\Documents\\GitHub\\User-service\\UserServer\\UserServer.csproj": {}
+    "D:\\S6\\Own project\\Project\\User-service\\UserServer\\UserServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gebruiker\\Documents\\GitHub\\User-service\\UserServer\\UserServer.csproj": {
+    "D:\\S6\\Own project\\Project\\User-service\\UserServer\\UserServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gebruiker\\Documents\\GitHub\\User-service\\UserServer\\UserServer.csproj",
+        "projectUniqueName": "D:\\S6\\Own project\\Project\\User-service\\UserServer\\UserServer.csproj",
         "projectName": "UserServer",
-        "projectPath": "C:\\Users\\Gebruiker\\Documents\\GitHub\\User-service\\UserServer\\UserServer.csproj",
-        "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gebruiker\\Documents\\GitHub\\User-service\\UserServer\\obj\\",
+        "projectPath": "D:\\S6\\Own project\\Project\\User-service\\UserServer\\UserServer.csproj",
+        "packagesPath": "C:\\Users\\Laptop\\.nuget\\packages\\",
+        "outputPath": "D:\\S6\\Own project\\Project\\User-service\\UserServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Laptop\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
