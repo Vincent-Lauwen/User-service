@@ -128,15 +128,15 @@ jobs:
     
     - name: Create namespace
       run: |
-        namespacePresent=`kubectl get namespace | grep user-service-k8safc5 | wc -l`
+        namespacePresent=`kubectl get namespace | grep kwetter-app | wc -l`
         if [ $namespacePresent -eq 0 ]
         then
-            echo `kubectl create namespace user-service-k8safc5`
+            echo `kubectl create namespace kwetter-app`
         fi
 
     - uses: azure/k8s-create-secret@v1
       with:
-        namespace: user-service-k8safc5
+        namespace: kwetter-app
         container-registry-url: kwettercr.azurecr.io
         container-registry-username: ${{ secrets.acr_kwettercr_username }}
         container-registry-password: ${{ secrets.acr_kwettercr_password }}
@@ -144,7 +144,7 @@ jobs:
        
     - uses: azure/k8s-deploy@v1.2
       with:
-        namespace: user-service-k8safc5
+        namespace: kwetter-app
         manifests: |
           manifests/deployment.yml
           manifests/service.yml
